@@ -1,14 +1,14 @@
 {
   "name": "kanban_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Kanban React App using React, ES6, SASS, and Webpack",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "Silin Na",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.23.1",
