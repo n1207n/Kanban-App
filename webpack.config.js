@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const npmInstallPlugin = require('npm-install-webpack-plugin');
 
 // Set target event and paths
 const TARGET = process.env.npm_lifecycle_event;
@@ -36,7 +37,8 @@ const common = {
 // Run server command
 if (TARGET == 'start' || !TARGET) {
   module.exports = merge(common, {
-    // Dev server
+    devtool: 'eval-source-map',
+
     devServer: {
       contentBase: PATHS.build,
 
@@ -53,7 +55,10 @@ if (TARGET == 'start' || !TARGET) {
 
     // Webpack HMR plugin load
     plugins: [
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new npmInstallPlugin({
+        save: true
+      })
     ]
   });
 }
