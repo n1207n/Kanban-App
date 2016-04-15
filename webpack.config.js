@@ -21,13 +21,15 @@ const common = {
   },
   module: {
     loaders: [
-      // CSS and style loaders
+      // SASS loaders
       {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-        include: PATHS.app
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
       }
     ]
+  },
+  sassLoader: {
+    includePaths: [path.resolve(PATHS.app, './sass')]
   }
 };
 
