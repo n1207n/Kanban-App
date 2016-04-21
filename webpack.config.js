@@ -13,6 +13,9 @@ const PATHS = {
 
 // Set common webpack configuration
 const common = {
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   entry: {
     app: PATHS.app
   },
@@ -26,6 +29,11 @@ const common = {
       {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass'],
+      },
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel?cacheDirectory'],
+        include: PATHS.app
       }
     ]
   },
