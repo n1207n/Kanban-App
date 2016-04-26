@@ -4,18 +4,24 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const npmInstallPlugin = require('npm-install-webpack-plugin');
 
-// Set target event and paths
+// Set target NPM event and paths
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build')
 };
 
+// Let Babel can listen to NPM event as well so that it can load specific presets at start
+process.env.BABEL_ENV = TARGET;
+
 // Set common webpack configuration
 const common = {
+  // Babel
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+
+  // Default Webpack setup
   entry: {
     app: PATHS.app
   },
@@ -23,6 +29,8 @@ const common = {
     path: PATHS.build,
     filename: 'bundle.js'
   },
+
+  // Webpack loaders
   module: {
     loaders: [
       // SASS loaders
@@ -30,6 +38,8 @@ const common = {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass'],
       },
+
+      // Babel
       {
         test: /\.jsx?$/,
         loaders: ['babel?cacheDirectory'],
@@ -37,6 +47,8 @@ const common = {
       }
     ]
   },
+
+  // Webpack SASS loader configuration
   sassLoader: {
     includePaths: [path.resolve(PATHS.app, './sass')]
   }
