@@ -50,7 +50,7 @@ const common = {
 
   // Webpack SASS loader configuration
   sassLoader: {
-    includePaths: [path.resolve(PATHS.app, './sass')]
+    includePaths: [path.resolve(PATHS.app, './scss')]
   }
 };
 
