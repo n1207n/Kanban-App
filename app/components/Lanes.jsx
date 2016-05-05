@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default class Lanes extends React.Component {
-  render() {
-    return (
-      <div className="lanes">
+import Lane from './Lane.jsx';
 
-      </div>
-    )
-  }
+export default ({lanes}) => {
+  return (
+    <div className="lanes">{lanes.map(lane =>
+        <Lane className="lane" key={lane.id} lane={lane} />
+    )}</div>
+  )
 }
