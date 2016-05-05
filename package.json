@@ -28,6 +28,7 @@
     "webpack-merge": "^0.10.0"
   },
   "dependencies": {
+    "alt": "^0.18.4",
     "babel-plugin-transform-regenerator": "^6.6.5",
     "react-dom": "^15.0.1"
   }
