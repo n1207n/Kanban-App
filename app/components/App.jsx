@@ -12,11 +12,11 @@ export default class App extends React.Component {
     this.state = NoteStore.getState();
   }
 
-  compoundDidMount() {
+  componentDidMount() {
     NoteStore.listen(this.storeChanged);
   }
 
-  compoundWillUnmount() {
+  componentWillUnmount() {
     NoteStore.unlisten(this.storeChanged);
   }
 
@@ -29,7 +29,6 @@ export default class App extends React.Component {
 
     return (
       <div>
-
         <button className="add-note" onClick={this.addNote}>+</button>
         <Notes notes={notes} onEdit={this.editNote} onDelete={this.deleteNote} />
       </div>
