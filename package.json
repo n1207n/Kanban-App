@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "alt": "^0.18.4",
+    "alt-container": "^1.0.2",
     "alt-utils": "^1.0.0",
     "babel-plugin-transform-regenerator": "^6.6.5",
     "react-dom": "^15.0.1"
