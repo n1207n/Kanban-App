@@ -5,11 +5,11 @@
   background-color: #fdfdfd;
   box-shadow: 0 0 0 0.3em 0.03em rgba(0, 0, 0, 0.3);
 
-  .task {
+  .value {
     display: inline-block;
   }
 
-  .delete-note {
+  .delete {
     float:right;
 
     padding: 0;
@@ -27,7 +27,7 @@
 
     transition: 0.6s;
 
-    .delete-note {
+    .delete {
       visibility: visible;
     }
   }
