@@ -77,7 +77,10 @@ export default class Lane extends React.Component {
 
     if(!name.trim()) {
       LaneActions.update({id: laneId, editing: false});
+      return;
     }
+
+    LaneActions.update({id: laneId, name, editing: false});
   }
 
   deleteLane = () => {
