@@ -34,8 +34,8 @@ export default class Lane extends React.Component {
             notes: () => NoteStore.getNotesByIds(lane.notes)
           }}>
           <Notes
-            onValueClick={this.activateNoteEdit} 
-            onEdit={this.editNote} 
+            onValueClick={this.activateNoteEdit}
+            onEdit={this.editNote}
             onDelete={this.deleteNote} />
         </AltContainer>
       </div>
@@ -44,10 +44,11 @@ export default class Lane extends React.Component {
 
   editNote(id, task) {
     if(!task.trim()) {
+      NoteActions.update({id, editing: false});
       return;
     }
 
-    NoteActions.update({id, task});
+    NoteActions.update({id, task, editing: false});
   }
 
   addNote = (e) => {
@@ -74,22 +75,24 @@ export default class Lane extends React.Component {
   editName = (name) => {
     const laneId = this.props.lane.id;
 
-    console.log(`edit lane ${laneId} name using ${name}`);
+    if(!name.trim()) {
+      LaneActions.update({id: laneId, editing: false});
+    }
   }
 
   deleteLane = () => {
     const laneId = this.props.lane.id;
 
-    console.log(`delete lane ${laneid}`);
+    LaneActions.delete(laneId);
   }
 
   activateLaneEdit = () => {
     const laneId = this.props.lane.id;
 
-    console.log(`activate lane ${laneId} edit`);
+    LaneActions.update({id: laneId, editing: true});
   }
 
   activateNoteEdit = (id) => {
-    console.log(`activate note ${id} edit`);
+    NoteActions.update({id, editing: true});
   }
 }
